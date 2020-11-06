@@ -21,9 +21,8 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         
         // tableViewCell Identifier
-        tableView.register(UINib(nibName: "oddCell", bundle: nil), forCellReuseIdentifier: "oddCell")
-        
         tableView.register(UINib(nibName: "evenCell", bundle: nil), forCellReuseIdentifier: "evenCell")
+        tableView.register(UINib(nibName: "oddCell", bundle: nil), forCellReuseIdentifier: "oddCell")
         
         Model.getQiitas { (qiitas) in
             self.qiitas = qiitas
@@ -42,25 +41,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let number = indexPath.row % 2
+        let qiita = qiitas[indexPath.row]
         
-        switch number {
+        switch (indexPath.row % 2) {
         
         case 0:
-            
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "evenCell", for: indexPath) as? evenCell else {
                 return UITableViewCell(style: .default, reuseIdentifier: "error")
             }
-            let qiita = qiitas[indexPath.row]
             cell.setCell(qiita)
             return cell
         
         default:
-            
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "oddCell", for: indexPath) as? oddCell else {
                 return UITableViewCell(style: .default, reuseIdentifier: "error")
             }
-            let qiita = qiitas[indexPath.row]
             cell.setCell(qiita)
             return cell
         }
