@@ -42,7 +42,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "qiitaCell", for: indexPath) as? qiitaCell else {
             
-            return UITableViewCell(style: .default, reuseIdentifier: "qiitaCell")
+            return UITableViewCell(style: .default, reuseIdentifier: "error")
         }
         
         let qiita = qiitas[indexPath.row]
