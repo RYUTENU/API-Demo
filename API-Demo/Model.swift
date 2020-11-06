@@ -20,7 +20,16 @@ class Model {
             do {
                 let qiitas = try JSONDecoder().decode([Qiita].self, from: data)
                 
-                completion(qiitas)
+                var qiitasNew: [Qiita] = []
+                
+                for qiita in qiitas {
+                    
+                    if qiita.user?.name != "" {
+                        qiitasNew.append(qiita)
+                    }
+                }
+                
+                completion(qiitasNew)
             }
             catch {
             }
