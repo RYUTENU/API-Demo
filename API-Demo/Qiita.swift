@@ -10,6 +10,7 @@ import Foundation
 struct Qiita: Codable {
     
     var title: String?
+    var url: String?
     var user: User?
     
     struct User: Codable {

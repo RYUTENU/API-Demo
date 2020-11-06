@@ -11,9 +11,9 @@ class Model {
     
     static func getQiitas(completion: @escaping ([Qiita]) -> Void) {
         
-        guard let url = URL(string: "https://qiita.com/api/v2/items?per_page=50") else { return }
+        guard let qiitaUrl = URL(string: "https://qiita.com/api/v2/items?per_page=50") else { return }
         
-        let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
+        let dataTask = URLSession.shared.dataTask(with: qiitaUrl) { data, response, error in
             
             guard let data = data else { return }
             
