@@ -1,5 +1,5 @@
 //
-//  qiitaCell.swift
+//  evenCell.swift
 //  API-Demo
 //
 //  Created by 劉 天宇 on 2020/11/06.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class qiitaCell: UITableViewCell {
+class evenCell: UITableViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,5 +29,4 @@ class qiitaCell: UITableViewCell {
         titleLabel.text = qiita.title
         nameLabel.text = qiita.user?.name
     }
-    
 }
