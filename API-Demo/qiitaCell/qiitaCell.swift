@@ -1,13 +1,13 @@
 //
-//  TableViewCell.swift
+//  qiitaCell.swift
 //  API-Demo
 //
-//  Created by Alan Liu on 2020/11/06.
+//  Created by 劉 天宇 on 2020/11/06.
 //
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class qiitaCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -29,4 +29,5 @@ class TableViewCell: UITableViewCell {
         titleLabel.text = qiita.title
         nameLabel.text = qiita.user?.name
     }
+    
 }

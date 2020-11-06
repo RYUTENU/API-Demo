@@ -20,6 +20,9 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        // tableViewCell Identifier
+        tableView.register(UINib(nibName: "qiitaCell", bundle: nil), forCellReuseIdentifier: "qiitaCell")
+        
         Model.getQiitas { (qiitas) in
             self.qiitas = qiitas
             DispatchQueue.main.async {
@@ -37,9 +40,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? TableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "qiitaCell", for: indexPath) as? qiitaCell else {
             
-            return UITableViewCell(style: .default, reuseIdentifier: "Cell")
+            return UITableViewCell(style: .default, reuseIdentifier: "qiitaCell")
         }
         
         let qiita = qiitas[indexPath.row]
