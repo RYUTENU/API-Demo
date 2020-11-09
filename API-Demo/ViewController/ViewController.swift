@@ -60,4 +60,23 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let qiita = qiitas[indexPath.row]
+        
+        guard let secondVC = storyboard?.instantiateViewController(withIdentifier: "secondVC") as? SecondViewController else { return }
+        
+        secondVC.qiita = qiita
+        
+        switch (indexPath.row % 2) {
+        
+        case 0:
+            navigationController?.pushViewController(secondVC, animated: true)
+            
+        default:
+            secondVC.modalTransitionStyle = .coverVertical
+            present(secondVC, animated: true, completion: nil)
+        }
+    }
 }

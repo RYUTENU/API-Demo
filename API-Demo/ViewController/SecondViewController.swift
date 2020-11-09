@@ -25,5 +25,7 @@ class SecondViewController: UIViewController {
         guard let urlString = qiita?.url else { return }
         
         guard let qiitaUrl = URL(string: urlString) else { return }
+        
+        webView.load(URLRequest(url: qiitaUrl))
     }
 }
