@@ -72,9 +72,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         switch (indexPath.row % 2) {
         
         case 0:
+            secondVC.needBackButton = false
             navigationController?.pushViewController(secondVC, animated: true)
             
         default:
+            secondVC.needBackButton = true
             secondVC.modalTransitionStyle = .coverVertical
             present(secondVC, animated: true, completion: nil)
         }

@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="API_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VC" id="BYZ-38-t0r" customClass="ViewController" customModule="API_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,7 +42,7 @@
         <!--Second View Controller-->
         <scene sceneID="GHg-sQ-8ME">
             <objects>
-                <viewController storyboardIdentifier="secondVC" id="q6e-em-Kpv" customClass="SecondViewController" customModule="API_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="secondVC" modalPresentationStyle="fullScreen" id="q6e-em-Kpv" customClass="SecondViewController" customModule="API_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="59G-qg-YJg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
