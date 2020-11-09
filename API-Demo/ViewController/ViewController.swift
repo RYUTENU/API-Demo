@@ -69,16 +69,40 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         secondVC.qiita = qiita
         
-        switch (indexPath.row % 2) {
-        
-        case 0:
+        if (indexPath.row % 2 == 0) {
+            
             secondVC.needBackButton = false
             navigationController?.pushViewController(secondVC, animated: true)
+            return
+        }
+        
+        if (indexPath.row % 3 == 0) {
             
-        default:
             secondVC.needBackButton = true
             secondVC.modalTransitionStyle = .coverVertical
             present(secondVC, animated: true, completion: nil)
+            return
+        }
+        
+        if (indexPath.row % 5 == 0) {
+            
+            guard let qiitaUrl = qiita.url else { return }
+            
+            let alert = UIAlertController(title: "下記のURLを開く", message: "\(qiitaUrl)", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                
+                guard let url = URL(string: qiitaUrl) else { return }
+                UIApplication.shared.open(url)
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            alert.addAction(cancelAction)
+            alert.addAction(defaultAction)
+            
+            present(alert, animated: true, completion: nil)
+            return
         }
     }
 }
