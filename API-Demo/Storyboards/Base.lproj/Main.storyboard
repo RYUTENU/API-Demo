@@ -47,25 +47,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rsx-qK-Evu">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="e4W-M9-upU">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <subviews>
+                                    <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mkd-1C-v6w">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                        <items>
+                                            <barButtonItem title="Back" id="TS5-wn-Sut">
+                                                <connections>
+                                                    <action selector="actionDismiss:" destination="q6e-em-Kpv" id="Se3-dr-wdM"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </items>
+                                    </toolbar>
+                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rsx-qK-Evu">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jVf-WO-Etd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rsx-qK-Evu" firstAttribute="leading" secondItem="jVf-WO-Etd" secondAttribute="leading" id="GU5-Ye-snS"/>
-                            <constraint firstItem="rsx-qK-Evu" firstAttribute="top" secondItem="jVf-WO-Etd" secondAttribute="top" id="HOO-Rr-rgA"/>
-                            <constraint firstItem="jVf-WO-Etd" firstAttribute="trailing" secondItem="rsx-qK-Evu" secondAttribute="trailing" id="S05-lf-Zrz"/>
-                            <constraint firstItem="jVf-WO-Etd" firstAttribute="bottom" secondItem="rsx-qK-Evu" secondAttribute="bottom" id="TfT-Wa-F88"/>
+                            <constraint firstAttribute="trailing" secondItem="e4W-M9-upU" secondAttribute="trailing" id="MIY-hT-tek"/>
+                            <constraint firstItem="e4W-M9-upU" firstAttribute="top" secondItem="jVf-WO-Etd" secondAttribute="top" id="Q6f-TZ-FN5"/>
+                            <constraint firstAttribute="bottom" secondItem="e4W-M9-upU" secondAttribute="bottom" id="kK5-52-tW2"/>
+                            <constraint firstItem="e4W-M9-upU" firstAttribute="leading" secondItem="jVf-WO-Etd" secondAttribute="leading" id="xOi-LK-48A"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="toolbar" destination="mkd-1C-v6w" id="leO-s8-E8H"/>
                         <outlet property="webView" destination="rsx-qK-Evu" id="Rdv-8q-cza"/>
                     </connections>
                 </viewController>

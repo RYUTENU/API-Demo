@@ -10,50 +10,29 @@ import WebKit
 
 class SecondViewController: UIViewController {
 
+    @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var webView: WKWebView!
     
     var qiita: Qiita?
     
-    var needBackButton: Bool?
+    var isNeedBackButton = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-        if needBackButton == true {
-            setToolbar()
+        if isNeedBackButton {
+            toolbar.isHidden = false
         }
     }
     
-    func setToolbar() {
+    @IBAction func actionDismiss(_ sender: Any) {
         
-        let toolbar = UIToolbar(frame: CGRect(origin: .zero, size: .init(width: view.bounds.size.width, height:20)))
-        
-        let backButton = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(back))
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
-        toolbar.setItems([backButton, flexSpace], animated: false)
-        toolbar.sizeToFit()
-        
-        // 問題1. Toolbar どうやってviewではなく、Safe Areaに付けるのか。
-        webView.addSubview(toolbar)
-        
-        /*
-        webView.transform = CGAffineTransform(translationX: 0, y: toolbar.frame.size.height)
-        */
-    }
-    
-    @objc func back() {
-        
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
-        guard let urlString = qiita?.url else { return }
-        
-        guard let qiitaUrl = URL(string: urlString) else { return }
+        guard let urlString = qiita?.url, let qiitaUrl = URL(string: urlString) else { return }
         
         webView.load(URLRequest(url: qiitaUrl))
     }

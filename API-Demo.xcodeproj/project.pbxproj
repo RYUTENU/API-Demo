@@ -81,13 +81,11 @@
 			children = (
 				06B497272553E50C009A7350 /* AppDelegate.swift */,
 				06B497292553E50C009A7350 /* SceneDelegate.swift */,
+				06F0F487255A37F800739E59 /* Model */,
 				0630580A25554CA80097E5AE /* ViewController */,
-				06B497412553E94F009A7350 /* Qiita.swift */,
-				E708EF192554621A00C9CF44 /* Model.swift */,
 				06B4974A2554F57E009A7350 /* Cell */,
-				06B4972D2553E50C009A7350 /* Main.storyboard */,
+				06F0F488255A382000739E59 /* Storyboards */,
 				06B497302553E50E009A7350 /* Assets.xcassets */,
-				06B497322553E50E009A7350 /* LaunchScreen.storyboard */,
 				06B497352553E50E009A7350 /* Info.plist */,
 			);
 			path = "API-Demo";
@@ -102,6 +100,24 @@
 				063057EC2555295C0097E5AE /* evenCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		06F0F487255A37F800739E59 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E708EF192554621A00C9CF44 /* Model.swift */,
+				06B497412553E94F009A7350 /* Qiita.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		06F0F488255A382000739E59 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				06B4972D2553E50C009A7350 /* Main.storyboard */,
+				06B497322553E50E009A7350 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

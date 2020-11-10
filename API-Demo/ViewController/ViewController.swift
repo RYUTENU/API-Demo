@@ -15,10 +15,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-        tableView.delegate = self
         tableView.dataSource = self
+        tableView.delegate = self
         
         // tableViewCell Identifier
         tableView.register(UINib(nibName: "evenCell", bundle: nil), forCellReuseIdentifier: "evenCell")
@@ -31,9 +30,43 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let indexPathForSelectedRow = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+        }
+    }
+    
+    // MARK: Private Methods
+    /// Show Alert
+    private func showAlert(urlStr: String?) {
+        
+        guard let qiitaUrl = urlStr else { return }
+        let alert = UIAlertController(title: "下記のURLを開く", message: "\(qiitaUrl)", preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            
+            guard let url = URL(string: qiitaUrl) else { return }
+            UIApplication.shared.open(url)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            
+            if let indexPathForSelectedRow = self.tableView.indexPathForSelectedRow {
+                self.tableView.deselectRow(at: indexPathForSelectedRow, animated: true)
+            }
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        
+        present(alert, animated: true)
+    }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+// MARK: - UITableViewDataSource
+extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         qiitas.count
@@ -60,6 +93,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
+}
+
+// MARK: - UITableViewDelegate
+extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -71,38 +108,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         if (indexPath.row % 2 == 0) {
             
-            secondVC.needBackButton = false
             navigationController?.pushViewController(secondVC, animated: true)
-            return
-        }
-        
-        if (indexPath.row % 3 == 0) {
             
-            secondVC.needBackButton = true
+        } else if (indexPath.row % 3 == 0) {
+            
+            secondVC.isNeedBackButton = true
             secondVC.modalTransitionStyle = .coverVertical
-            present(secondVC, animated: true, completion: nil)
-            return
-        }
-        
-        if (indexPath.row % 5 == 0) {
+            present(secondVC, animated: true)
             
-            guard let qiitaUrl = qiita.url else { return }
+        } else if (indexPath.row % 5 == 0) {
             
-            let alert = UIAlertController(title: "下記のURLを開く", message: "\(qiitaUrl)", preferredStyle: .alert)
+            showAlert(urlStr: qiita.url)
             
-            let defaultAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                
-                guard let url = URL(string: qiitaUrl) else { return }
-                UIApplication.shared.open(url)
-            }
+        } else {
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            alert.addAction(defaultAction)
-            
-            present(alert, animated: true, completion: nil)
-            return
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
 }
