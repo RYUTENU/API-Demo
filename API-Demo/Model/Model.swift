@@ -15,7 +15,7 @@ class Model {
         
         let dataTask = URLSession.shared.dataTask(with: qiitaUrl) { data, response, error in
             
-            guard let data = data else { return }
+            guard let data = data, error == nil else { return }
             
             do {
                 let qiitas = try JSONDecoder().decode([Qiita].self, from: data)
