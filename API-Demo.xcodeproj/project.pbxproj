@@ -51,13 +51,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0630580A25554CA80097E5AE /* ViewController */ = {
+		0630580A25554CA80097E5AE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				06B4972B2553E50C009A7350 /* ViewController.swift */,
 				0630580B25554D150097E5AE /* SecondViewController.swift */,
 			);
-			path = ViewController;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		06B4971B2553E50C009A7350 = {
@@ -81,9 +81,9 @@
 			children = (
 				06B497272553E50C009A7350 /* AppDelegate.swift */,
 				06B497292553E50C009A7350 /* SceneDelegate.swift */,
-				06F0F487255A37F800739E59 /* Model */,
-				0630580A25554CA80097E5AE /* ViewController */,
-				06B4974A2554F57E009A7350 /* Cell */,
+				06F0F487255A37F800739E59 /* Models */,
+				0630580A25554CA80097E5AE /* ViewControllers */,
+				06B4974A2554F57E009A7350 /* Views */,
 				06F0F488255A382000739E59 /* Storyboards */,
 				06B497302553E50E009A7350 /* Assets.xcassets */,
 				06B497352553E50E009A7350 /* Info.plist */,
@@ -91,7 +91,7 @@
 			path = "API-Demo";
 			sourceTree = "<group>";
 		};
-		06B4974A2554F57E009A7350 /* Cell */ = {
+		06B4974A2554F57E009A7350 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				06B4974E2554F9FF009A7350 /* oddCell.swift */,
@@ -99,16 +99,16 @@
 				063057EB2555295C0097E5AE /* evenCell.swift */,
 				063057EC2555295C0097E5AE /* evenCell.xib */,
 			);
-			path = Cell;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		06F0F487255A37F800739E59 /* Model */ = {
+		06F0F487255A37F800739E59 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				E708EF192554621A00C9CF44 /* Model.swift */,
 				06B497412553E94F009A7350 /* Qiita.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		06F0F488255A382000739E59 /* Storyboards */ = {
